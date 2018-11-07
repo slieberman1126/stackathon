@@ -45,7 +45,7 @@
     "test": "DATABASE_URL=postgres://localhost/grace_shopper_test nodemon ./node_modules/mocha/bin/mocha server/**/*.spec.js",
     "postinstall": "npm run webpack",
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "start:dev": "npm run webpack -- --watch --mode=development & DATABASE_URL=postgres://localhost/grace_shopper JWT_SECRET=shopper nodemon server/index.js --ignore src/ --ignore dist"
+    "start:dev": "npm run webpack -- --watch --mode=development & DATABASE_URL=postgres://localhost/grace_shopper nodemon server/index.js --ignore src/ --ignore dist"
   },
   "keywords": [],
   "author": "",
