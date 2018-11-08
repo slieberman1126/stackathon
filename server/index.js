@@ -6,7 +6,7 @@ const db = require('./db');
 //const students = require('./students');
 //const schools = require('./schools');
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 //syncAndSeed();
 //app.use('/api/schools', schools);
@@ -17,4 +17,9 @@ app.get('/', (req, res, next) =>
   res.sendFile(path.join(__dirname, '..', 'index.html'))
 );
 
-app.listen(port, () => console.log(`on port ${port}`));
+db.sync()
+  .then(() => {
+    return db.seed();
+  })
+  .then(() => console.log("Database Sync'ed and Seeded"))
+  .then(() => app.listen(PORT, () => console.log(`Listening on Port ${PORT}`)));
