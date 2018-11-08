@@ -1,8 +1,18 @@
+'use strict';
+
 const Sequelize = require('sequelize');
 const conn = require('./conn');
 const Restaurant = require('./Restaurant');
 const Neighborhood = require('./Neighborhood');
-const { createNeighborhoods } = require('./seed');
+const { createNeighborhoods, createRestaurants } = require('./seed');
+const yelp = require('yelp-fusion');
+const apiKey = require('../../secrets').apiKey;
+const searchRequest = {
+  term: 'pizza',
+  location: 'manhattan, ny',
+};
+
+const client = yelp.client(apiKey);
 Restaurant.belongsTo(Neighborhood);
 Neighborhood.hasMany(Restaurant);
 
@@ -11,9 +21,17 @@ const sync = () => {
 };
 const seed = () => {
   const neighborhoods = createNeighborhoods();
-  return Promise.all(
-    neighborhoods.map(neighborhood => Neighborhood.create(neighborhood))
-  );
+  const restaurants = createRestaurants(searchRequest, client);
+  console.log(restaurants);
+  /*return Promise.all(
+    restaurants
+      .map(restaurant => Restaurant.create(restaurant))
+      .then(() => {
+        return Promise.all(
+          neighborhoods.map(neighborhood => Neighborhood.create(neighborhood))
+        );
+      })
+  );*/
 };
 
 module.exports = {

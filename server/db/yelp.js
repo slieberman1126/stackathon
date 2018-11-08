@@ -1,5 +1,6 @@
+'use stricts';
 const yelp = require('yelp-fusion');
-const apiKey = require('./secrets').apiKey;
+const apiKey = require('../../secrets').apiKey;
 
 const searchRequest = {
   term: 'pizza',
@@ -18,3 +19,9 @@ client
   .catch(e => {
     console.log(e);
   });
+
+const getRestaurants = async searchRequest => {
+  const result = await client.search(searchRequest);
+  const result2 = result.jsonBody.businesses;
+  const final = JSON.stringify(result2, null, 4);
+};

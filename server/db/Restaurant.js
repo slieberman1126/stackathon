@@ -13,21 +13,17 @@ const Restaurant = conn.define('restaurant', {
     type: Sequelize.INTEGER,
     defaultValue: 0,
   },
-  categories: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-  },
   url: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  latitude: {
-    type: Sequelize.DECIMAL,
-  },
-  longitude: {
-    type: Sequelize.DECIMAL,
-  },
-
   imageUrl: {
+    type: Sequelize.STRING,
+  },
+  zipcode: {
+    type: Sequelize.STRING,
+  },
+  address: {
     type: Sequelize.STRING,
   },
 });

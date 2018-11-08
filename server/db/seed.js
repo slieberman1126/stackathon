@@ -1,3 +1,39 @@
+/*const yelp = require('yelp-fusion');
+const apiKey = require('../../secrets').apiKey;
+
+const searchRequest = {
+  term: 'pizza',
+  location: 'manhattan, ny',
+};
+
+const client = yelp.client(apiKey);
+*/
+const createRestaurants = (searchRequest, client) => {
+  const restaurants = [];
+  client.search(searchRequest).then(response => {
+    const result = response.jsonBody.businesses;
+    result.forEach(restaurant => {
+      const name = restaurant.name;
+      const rating = restaurant.rating;
+      const reviewCount = restaurant.review_count;
+      const url = restaurant.url;
+      const imageUrl = restaurant.image_url;
+      const zipcode = restaurant.location.zip_code;
+      const address = restaurant.location.address1;
+      restaurants.push({
+        name,
+        rating,
+        reviewCount,
+        url,
+        imageUrl,
+        zipcode,
+        address,
+      });
+    });
+    return restaurants;
+  });
+};
+
 const createNeighborhoods = () => {
   const neighborhoods = [];
   neighborhoods.push(
@@ -78,8 +114,7 @@ const createNeighborhoods = () => {
       zipcodes: ['10034'],
     }
   );
-
   return neighborhoods;
 };
 
-module.exports = { createNeighborhoods };
+module.exports = { createNeighborhoods, createRestaurants };
