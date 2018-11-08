@@ -1,16 +1,16 @@
 const path = require('path');
 const express = require('express');
 
-const db = require('./db');
+const db = require('./db/index');
 //const { syncAndSeed } = db;
-//const students = require('./students');
-//const schools = require('./schools');
+const restaurants = require('./api/restaurants');
+const neighborhoods = require('./api/neighborhoods');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 //syncAndSeed();
-//app.use('/api/schools', schools);
-//app.use('/api/students', students);
+app.use('/api/neighborhoods', neighborhoods);
+app.use('/api/restaurants', restaurants);
 app.use('/dist', express.static(path.join(__dirname, '..', 'dist')));
 
 app.get('/', (req, res, next) =>
