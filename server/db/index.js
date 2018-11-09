@@ -8,7 +8,8 @@ const apiKey = require('../../secrets').apiKey;
 
 const searchRequest = {
   term: 'pizza',
-  location: '10026',
+  location: 'manhattan, ny',
+  limit: '50',
 };
 
 const client = yelp.client(apiKey);

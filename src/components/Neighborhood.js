@@ -1,30 +1,52 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import sortBy from 'sort-by';
+import { List, Header } from 'semantic-ui-react';
 
 class Neighborhood extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const { neighborhood, restaurants } = this.props;
     const findRestaurants = restaurants.filter(
       restaurant => restaurant.neighborhoodId === neighborhood.id
     );
+    if (findRestaurants.length === 0) {
+      return (
+        <div>
+          <Header as="h1">
+            There are currently no reviews in {neighborhood.name}
+          </Header>
+          <Header as="h2">
+            <Link to="/neighborhoods">Back</Link>
+          </Header>
+        </div>
+      );
+    }
     return (
       <div>
-        <h1>{neighborhood.name}</h1>
-        <ul>
-          {findRestaurants.map(restaurant => {
-            return (
-              <li key={restaurant.id}>
-                <Link to={`/restaurants/${restaurant.id}`}>
-                  {restaurant.name}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <Header as="h1">Top Slice in {neighborhood.name}</Header>
+        <List>
+          {findRestaurants
+            .sort(sortBy('rating', 'reviewCount'))
+            .reverse()
+            .map(restaurant => {
+              return (
+                <List.Item key={restaurant.id}>
+                  <List.Icon name="marker" />
+                  <List.Content>
+                    <List.Header>
+                      <Link to={`/restaurants/${restaurant.id}`}>
+                        {restaurant.name}
+                      </Link>
+                    </List.Header>
+                    <List.Description>
+                      {restaurant.address} New York, NY {restaurant.zipcode}
+                    </List.Description>
+                  </List.Content>
+                </List.Item>
+              );
+            })}
+        </List>
       </div>
     );
   }

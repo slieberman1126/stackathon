@@ -7,6 +7,7 @@ import { getRestaurants, getNeighborhoods } from '../store';
 import Neighborhood from './Neighborhood';
 import Neighborhoods from './Neighborhoods';
 import Nav from './Nav';
+import Home from './Home';
 
 class App extends Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class App extends Component {
         <div>
           <Route component={Nav} />
           <Switch>
+            <Route exact path="/" component={Home} />
             <Route exact path="/restaurants" component={Restaurants} />
             <Route path="/restaurants/:id" component={Restaurant} />
             <Route exact path="/neighborhoods" component={Neighborhoods} />} />
