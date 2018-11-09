@@ -20,7 +20,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/restaurants" component={Restaurants} />
             <Route path="/restaurants/:id" component={Restaurant} />
-            <Route exact path="/neighborhoods" component={Neighborhoods} />
+            <Route exact path="/neighborhoods" component={Neighborhoods} />} />
             <Route path="/neighborhoods/:id" component={Neighborhood} />
           </Switch>
         </div>
@@ -30,7 +30,7 @@ class App extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    init: () => dispatch(getNeighborhoods()),
+    init: () => dispatch(getNeighborhoods()).then(dispatch(getRestaurants())),
   };
 };
 export default connect(

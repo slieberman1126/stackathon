@@ -8,10 +8,12 @@ const Restaurant = conn.define('restaurant', {
   },
   rating: {
     type: Sequelize.INTEGER,
+    allowNull: false,
   },
   reviewCount: {
     type: Sequelize.INTEGER,
     defaultValue: 0,
+    allowNull: false,
   },
   url: {
     type: Sequelize.STRING,
@@ -19,12 +21,15 @@ const Restaurant = conn.define('restaurant', {
   },
   imageUrl: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
   zipcode: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
   address: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
 });
 module.exports = Restaurant;
