@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Header, Pagination } from 'semantic-ui-react';
 import sortBy from 'sort-by';
 import SingleRestaurant from './SingleRestaurant';
 class Home extends Component {
@@ -8,7 +8,9 @@ class Home extends Component {
     const { restaurants } = this.props;
     return (
       <div>
-        <Grid columns={3} padded>
+        <Header as="h1">Top Rated</Header>
+
+        <Grid columns={4} padded>
           {restaurants
             .sort(sortBy('rating', 'reviewCount'))
             .reverse()
@@ -20,6 +22,7 @@ class Home extends Component {
               );
             })}
         </Grid>
+        <Pagination defaultActivePage={1} totalPages={5} />
       </div>
     );
   }
