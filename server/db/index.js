@@ -36,7 +36,7 @@ const seed = () => {
         const imageUrl = restaurant.image_url;
         const zipcode = restaurant.location.zip_code;
         const address = restaurant.location.address1;
-        let neighborhoodId = 0;
+        let neighborhoodId = null;
         neighborhoods.forEach(neighborhood => {
           if (neighborhood.zipcodes.includes(zipcode)) {
             neighborhoodId = neighborhood.id;

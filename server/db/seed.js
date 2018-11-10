@@ -9,7 +9,7 @@ const createNeighborhoods = () => {
     {
       id: 2,
       name: 'West Harlem',
-      zipcodes: ['10027'],
+      zipcodes: ['10027', '10025'],
     },
     {
       id: 3,
@@ -64,7 +64,7 @@ const createNeighborhoods = () => {
     {
       id: 13,
       name: 'Financial District',
-      zipcodes: ['10004', '10005', '10006', '10007', '10038', '10280'],
+      zipcodes: ['10004', '10005', '10006', '10007', '10038', '10280', '10048'],
     },
     {
       id: 14,
@@ -89,12 +89,12 @@ const createNeighborhoods = () => {
     {
       id: 18,
       name: 'Washington Heights',
-      zipcodes: ['10031', '10032', '10033', '10040'],
+      zipcodes: ['10031', '10032', '10033'],
     },
     {
       id: 19,
       name: 'Inwood',
-      zipcodes: ['10034'],
+      zipcodes: ['10034', '10040'],
     }
   );
   return neighborhoods;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import sortBy from 'sort-by';
-import { List, Header } from 'semantic-ui-react';
+import { List, Header, Image } from 'semantic-ui-react';
 
 class Neighborhood extends Component {
   render() {
@@ -32,7 +32,10 @@ class Neighborhood extends Component {
             .map(restaurant => {
               return (
                 <List.Item key={restaurant.id}>
-                  <List.Icon name="marker" />
+                  <Image
+                    avatar
+                    src="https://news.bitcoin.com/wp-content/uploads/2017/05/Pizza-Slice-PNG-Image.png"
+                  />
                   <List.Content>
                     <List.Header>
                       <Link to={`/restaurants/${restaurant.id}`}>

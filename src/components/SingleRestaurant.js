@@ -8,6 +8,9 @@ class SingleRestaurant extends Component {
     const findNeighborhood = neighborhoods.find(
       neighborhood => neighborhood.id === restaurant.neighborhoodId
     );
+    if (!restaurant.neighborhoodId) {
+      return null;
+    }
     return (
       <Container>
         <Card>
