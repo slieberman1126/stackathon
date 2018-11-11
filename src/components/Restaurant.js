@@ -12,6 +12,7 @@ class Restaurant extends Component {
     };
     this.getReviews = this.getReviews.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentDidMount() {
     if (!this.props.restaurant) return null;

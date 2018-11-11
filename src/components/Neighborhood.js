@@ -5,6 +5,9 @@ import sortBy from 'sort-by';
 import { List, Header, Image } from 'semantic-ui-react';
 
 class Neighborhood extends Component {
+  componentDidMount() {
+    if (!this.props.neighborhood) return null;
+  }
   render() {
     const { neighborhood, restaurants } = this.props;
     const findRestaurants = restaurants.filter(
