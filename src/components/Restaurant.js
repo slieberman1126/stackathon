@@ -11,11 +11,18 @@ class Restaurant extends Component {
       reviews: [],
     };
     this.getReviews = this.getReviews.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
   }
   componentDidMount() {
     if (!this.props.restaurant) return null;
     const yelpId = this.props.restaurant.yelpId;
     this.getReviews(yelpId);
+  }
+  componentDidUpdate(prevState) {
+    if (!this.props.restaurant) return null;
+    if (prevState.reviews !== this.state.reviews) {
+      return this.getReviews(this.props.restaurant.yelpId);
+    }
   }
   getReviews(yelpId) {
     axios
