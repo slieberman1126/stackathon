@@ -2,6 +2,10 @@ const Sequelize = require('sequelize');
 const conn = require('./conn');
 
 const Restaurant = conn.define('restaurant', {
+  yelpId: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   name: {
     type: Sequelize.STRING,
   },

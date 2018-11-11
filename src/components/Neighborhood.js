@@ -10,6 +10,7 @@ class Neighborhood extends Component {
     const findRestaurants = restaurants.filter(
       restaurant => restaurant.neighborhoodId === neighborhood.id
     );
+    if (!neighborhood) return null;
     if (findRestaurants.length === 0) {
       return (
         <div>

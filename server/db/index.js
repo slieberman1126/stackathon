@@ -1,4 +1,3 @@
-const Sequelize = require('sequelize');
 const conn = require('./conn');
 const Restaurant = require('./Restaurant');
 const Neighborhood = require('./Neighborhood');
@@ -36,6 +35,7 @@ const seed = () => {
         const imageUrl = restaurant.image_url;
         const zipcode = restaurant.location.zip_code;
         const address = restaurant.location.address1;
+        const yelpId = restaurant.id;
         let neighborhoodId = null;
         neighborhoods.forEach(neighborhood => {
           if (neighborhood.zipcodes.includes(zipcode)) {
@@ -50,6 +50,7 @@ const seed = () => {
           imageUrl,
           zipcode,
           address,
+          yelpId,
           neighborhoodId,
         });
       });

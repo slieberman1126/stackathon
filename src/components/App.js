@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Restaurant from './Restaurant';
 import Restaurants from './Restaurants';
@@ -22,7 +22,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/restaurants" component={Restaurants} />
             <Route path="/restaurants/:id" component={Restaurant} />
-            <Route exact path="/neighborhoods" component={Neighborhoods} />} />
+            <Route exact path="/neighborhoods" component={Neighborhoods} />
             <Route path="/neighborhoods/:id" component={Neighborhood} />
           </Switch>
         </div>
@@ -30,6 +30,7 @@ class App extends Component {
     );
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     init: () => dispatch(getNeighborhoods()).then(dispatch(getRestaurants())),

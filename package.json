@@ -7,6 +7,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
+    "cors": "^2.8.5",
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "jwt-simple": "^0.5.5",
@@ -17,6 +18,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
@@ -27,6 +29,8 @@
     "supertest": "^3.3.0",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
+    "yelp": "^1.0.2",
+    "yelp-api": "^1.0.3",
     "yelp-fusion": "^2.2.1"
   },
   "babel": {

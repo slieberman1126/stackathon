@@ -4,9 +4,10 @@ import thunk from 'redux-thunk';
 import axios from 'axios';
 
 const GET_RESTAURANTS = 'GET_RESTAURANTS';
-const GET_RESTAURANT = 'GET_RESTAURANT';
+
 const GET_NEIGHBORHOODS = 'GET_NEIGHBORHOODS';
-const GET_NEIGHBORHOOD = 'GET_NEIGHBORHOOD';
+
+const GET_REVIEWS_FROM_YELP = 'GET_REVIEWS_FROM_YELP';
 
 const _getRestaurants = restaurants => {
   return {
@@ -15,24 +16,13 @@ const _getRestaurants = restaurants => {
   };
 };
 
-const _getRestaurant = restaurant => {
-  return {
-    type: GET_RESTAURANT,
-    restaurant,
-  };
-};
 const _getNeighborhoods = neighborhoods => {
   return {
     type: GET_NEIGHBORHOODS,
     neighborhoods,
   };
 };
-const _getNeighborhood = neighborhood => {
-  return {
-    type: GET_NEIGHBORHOOD,
-    neighborhood,
-  };
-};
+
 export const getRestaurants = () => {
   return dispatch => {
     return axios
@@ -51,6 +41,7 @@ export const getNeighborhoods = () => {
       .catch(error => console.error(error));
   };
 };
+
 const restaurantsReducer = (state = [], action) => {
   switch (action.type) {
     case GET_RESTAURANTS:

@@ -24,7 +24,7 @@ const createNeighborhoods = () => {
     {
       id: 5,
       name: 'Midtown',
-      zipcodes: ['10020'],
+      zipcodes: ['10020', '10169', '10168'],
     },
     {
       id: 6,
@@ -95,6 +95,11 @@ const createNeighborhoods = () => {
       id: 19,
       name: 'Inwood',
       zipcodes: ['10034', '10040'],
+    },
+    {
+      id: 20,
+      name: 'Astoria',
+      zipcodes: ['11102'],
     }
   );
   return neighborhoods;
