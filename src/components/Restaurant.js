@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Image, Header, Rating, Feed } from 'semantic-ui-react';
+import { Image, Header, Rating, Feed, Icon, Grid } from 'semantic-ui-react';
 
 import axios from 'axios';
 class Restaurant extends Component {
@@ -30,43 +30,70 @@ class Restaurant extends Component {
     const { restaurant } = this.props;
     const { reviews } = this.state;
     if (!restaurant) return null;
+    if (!reviews) return null;
     return (
       <div>
-        <Header as="h1">{restaurant.name}</Header>
+        <Grid>
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              <Image
+                src={restaurant.imageUrl}
+                height="500px"
+                width="300px"
+                href={restaurant.url}
+                target="_blank"
+                bordered
+              />
+            </Grid.Column>
+            <Grid.Column>
+              <Header as="h1">{restaurant.name}</Header>
+              <Header as="h3">
+                To website:
+                <a target="_" href={restaurant.url}>
+                  {restaurant.url.slice(0, 30)}
+                </a>
+              </Header>
+              <Header as="h3">
+                Address: {restaurant.address} New York, NY {restaurant.zipcode}
+              </Header>
+              <Header as="h3">
+                Average rating:{'  '}
+                <Rating
+                  icon="star"
+                  defaultRating={restaurant.rating}
+                  maxRating={5}
+                />
+                {'  '}({restaurant.rating})
+              </Header>
+              <Header as="h3">Reviews: {restaurant.reviewCount}</Header>
+              <Header as="h3">
+                <Link to={`/neighborhoods/${restaurant.neighborhoodId}`}>
+                  Find more nearby
+                </Link>
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
 
-        <Image
-          src={restaurant.imageUrl}
-          height="300px"
-          width="300px"
-          href={restaurant.url}
-          target="_blank"
-          bordered
-        />
-        <Header as="h2">
-          <a target="_" href={restaurant.url}>
-            URL TO WEBSITE
-          </a>
-        </Header>
-        <Header as="h3">
-          Address: {restaurant.address} New York, NY {restaurant.zipcode}
-        </Header>
-
-        <Rating icon="star" defaultRating={restaurant.rating} maxRating={5} />
-        <Header as="h3">Reviews: {restaurant.reviewCount}</Header>
-        <Header as="h3">
-          <Link to={`/neighborhoods/${restaurant.neighborhoodId}`}>
-            Find more nearby
-          </Link>
-        </Header>
-        <Header as="h3">{reviews.length}</Header>
+        <Header as="h3">Reviews</Header>
         <Feed>
           {reviews.map(review => {
             console.log(review);
             return (
               <Feed.Event key={review.id}>
-                <Feed.Label>
-                  <Image src={review.user.image} />
-                </Feed.Label>
+                <Feed.Label image={review.user.image_url} />
+                <Feed.Content>
+                  <Feed.Summary>
+                    <Feed.User>{review.user.name}</Feed.User>
+                    <Feed.Date>{review.time_created}</Feed.Date>
+                  </Feed.Summary>
+                  <Feed.Extra text>{review.text}</Feed.Extra>
+                  <Feed.Meta>
+                    <Feed.Like>
+                      <Icon name="like" />
+                    </Feed.Like>
+                  </Feed.Meta>
+                </Feed.Content>
               </Feed.Event>
             );
           })}

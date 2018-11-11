@@ -7,7 +7,7 @@ const Nav = ({ neighborhoods, restaurants }) => {
   return (
     <Menu borderless>
       <Menu.Item>
-        <Header as="h1">Let's Grab A Slice</Header>
+        <Header as="h1">Pizza Time</Header>
       </Menu.Item>
       <Menu.Item position="right">
         <Link to="/">
