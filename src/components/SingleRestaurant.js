@@ -14,7 +14,10 @@ class SingleRestaurant extends Component {
     return (
       <Container>
         <Card>
-          <Image src={restaurant.imageUrl} height="200px" width="400px" />
+          <Link to={`/restaurants/${restaurant.id}`}>
+            {' '}
+            <Image src={restaurant.imageUrl} height="200px" width="400px" />
+          </Link>
           <Card.Content>
             <Card.Header>
               <Link to={`/restaurants/${restaurant.id}`}>

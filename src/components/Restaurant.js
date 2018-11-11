@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Image, Header, Rating } from 'semantic-ui-react';
+import { Image, Header, Rating, Feed } from 'semantic-ui-react';
 
 import axios from 'axios';
 class Restaurant extends Component {
@@ -11,7 +11,7 @@ class Restaurant extends Component {
       reviews: [],
     };
     this.getReviews = this.getReviews.bind(this);
-    this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    //this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentDidMount() {
@@ -19,18 +19,13 @@ class Restaurant extends Component {
     const yelpId = this.props.restaurant.yelpId;
     this.getReviews(yelpId);
   }
-  componentDidUpdate(prevState) {
-    if (!this.props.restaurant) return null;
-    if (prevState.reviews !== this.state.reviews) {
-      return this.getReviews(this.props.restaurant.yelpId);
-    }
-  }
   getReviews(yelpId) {
     axios
       .get(`/api/yelp/${yelpId}`)
       .then(response => response.data)
       .then(reviews => this.setState({ reviews }));
   }
+
   render() {
     const { restaurant } = this.props;
     const { reviews } = this.state;
@@ -64,6 +59,18 @@ class Restaurant extends Component {
           </Link>
         </Header>
         <Header as="h3">{reviews.length}</Header>
+        <Feed>
+          {reviews.map(review => {
+            console.log(review);
+            return (
+              <Feed.Event key={review.id}>
+                <Feed.Label>
+                  <Image src={review.user.image} />
+                </Feed.Label>
+              </Feed.Event>
+            );
+          })}
+        </Feed>
       </div>
     );
   }

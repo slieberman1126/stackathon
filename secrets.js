@@ -1,6 +1,6 @@
 const apiKey =
-  '9OTw5dFjBXFz15ohL7K5Ji2cYUVkY07qRIGyj0o-nnia2EzwXHyulEilOZICa3YpTcZ5m2P8LW0Djh9_mZcou40y1BdwYDc0E0qphDebuVgxpiyopnKL866ptXPjW3Yx';
+  'pzILjPdHiq-bWypQZw3W6G5rxgA5eBssN0D3q16v-s06iI8U8snYzFPJE1yMGGmwW9BxPhAMEc21f6b3oECV-LKMYPxbFu9i_-jFwnI8OQfN4REAGiCT8RtdhEvoW3Yx';
 
-const clientId = 'ceCW24L6gA81FQ8WWFF_mA';
+const clientId = 'HJP2gH6NqH8jOPMc5QMXew';
 
 module.exports = { apiKey, clientId };
